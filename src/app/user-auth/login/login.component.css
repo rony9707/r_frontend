@@ -1,9 +1,11 @@
-/* CSS for footer on bottom  */
-.main-container {
-  min-height: 50vh;
-  display: flex;
-  align-items: center;
+.blur {
+  filter: blur(10px);
 }
+
+/* CSS for footer on bottom  */
+/* .main-container {
+  
+} */
 
 .container {
   padding: 5px;
@@ -70,7 +72,7 @@
 
 .bi {
   position: relative;
-  margin-left: -17px
+  margin-left: -17px;
 }
 
 .flex {
@@ -158,8 +160,15 @@
 
 .fixToolTipCSS {
   position: relative;
-  right: -2px;
+  right: 1px;
 }
+
+::ng-deep .tooltip {
+  background-color: red;
+  color: blue;
+  font-size: 20px;
+}
+
 
 /* CSS */
 .form-btn {
@@ -199,11 +208,78 @@
 }
 
 
+/* Modal Popup */
+.hover_bkgr_fricc {
+  height: 100%;
+  position: fixed;
+  text-align: center;
+  top: 0;
+  width: 100%;
+  z-index: 10000;
+}
+
+.hover_bkgr_fricc .helper {
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+}
+
+.animate {
+  opacity: 0;
+}
+
+
+.inside-popup {
+  background-color: var(--bkg-color-form-forget-password);
+  box-shadow: 10px 10px 30px #4d5163;
+  /* border: 5px solid rgb(58, 52, 52); */
+  display: inline-block;
+  width: 65%;
+  position: relative;
+  border-radius: 20px;
+  padding: 15px 5%;
+  top: 150px;
+}
 
 
 
 
 
+/* Popup Main Content */
+.main-modal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.main-modal h1 {
+  color: var(--text-color);
+}
+
+
+.flex-item-modal {
+  margin: 20px;
+}
+
+.email {
+  display: flex;
+  justify-content: flex-start;
+}
+
+/* .inside-popup a {
+  justify-content: right;
+  margin: 0px;
+  cursor: pointer;
+  color: var(--text-color);
+  text-decoration: none;
+} */
+
+.close-btn {
+  margin: 0px;
+  cursor: pointer;
+  color: var(--text-color);
+  text-decoration: none;
+}
 
 
 
@@ -211,15 +287,15 @@
 
 @media(max-width:600px) {
   .input-field {
-    width: 95%;
+    width: var(--media-query-width);
   }
 
   .flex {
-    width: 95%;
+    width: var(--media-query-width);
   }
 
   .container {
-    width: 95%;
+    width: var(--media-query-width);
   }
 
   .flex {
@@ -231,11 +307,21 @@
   }
 
   .remember-me {
-    width: 95%
+    width: var(--media-query-width);
   }
 
   .input-invalid-text {
-    width: 95%;
+    width: var(--media-query-width);
+  }
+
+
+  .hover_bkgr_fricc>div {
+    width: var(--media-query-width);
+  }
+
+
+  .inside-popup {
+    top: 100px;
   }
 
 }

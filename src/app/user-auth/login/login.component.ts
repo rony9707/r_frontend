@@ -1,11 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormControl, FormGroup, Validator, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+
+
+// var shajs: any = require('sha.js')
+
+
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
+  encapsulation: ViewEncapsulation.None //To change font size of mattooltip
 })
 export class LoginComponent implements OnInit {
 
@@ -62,14 +68,15 @@ export class LoginComponent implements OnInit {
   //Form Code
   //FormGroup and FormControl Validators Code
   loginForm = new FormGroup({
-    username: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', [Validators.required, Validators.minLength(8)])
+    username: new FormControl('', [Validators.required]),
+    password: new FormControl('', [Validators.required])
   })
 
 
   //Get value of the form code
   loginUser() {
-    console.warn(this.loginForm.value)
+    //console.log(shajs('sha256').update(this.loginForm.value.password).digest('hex'));
+    console.warn(this.loginForm.value);
   }
 
 
@@ -84,7 +91,44 @@ export class LoginComponent implements OnInit {
 
 
 
+  //Code for popup modal
+  ispopUpShow: boolean = false
 
+  clickHandler() {
+    this.ispopUpShow = true;
+    document.getElementById("blur")?.classList.add('blur');
+  }
+
+  closePop() {
+    this.ispopUpShow = false;
+    document.getElementById("blur")?.classList.remove('blur')
+  }
+
+
+  //Code for closing modal by clicking outside of the modal
+  ClickedOut(event) {
+    if (event.target.className === "hover_bkgr_fricc" || event.target.className === "hover_bkgr_fricc ng-star-inserted") {
+      this.ispopUpShow = false;
+      document.getElementById("blur")?.classList.remove('blur')
+    }
+  }
+
+
+  //Forget Password Form
+  forgetPassword = new FormGroup({
+    email: new FormControl('', [Validators.required, Validators.email])
+  })
+
+
+  //Get value of the forget password code
+  forgetPasswordEmail() {
+    console.warn(this.forgetPassword.value)
+  }
+
+  //Code for input field validator text 
+  get forgetPassEmailValidator() {
+    return this.forgetPassword.get('email')
+  }
 
 
 
