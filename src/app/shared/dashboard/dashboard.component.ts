@@ -33,11 +33,12 @@ export class DashboardComponent implements OnInit {
     if (GetTheme === "Light Mode") {
       document.body.classList.add('light-theme');
     }
-    else {
+    else if (GetTheme === "Dark Mode") {
       document.body.classList.add();
     }
-
-
+    else {
+      document.body.classList.add('light-theme');//If someone deletes data from local stroage fix
+    }
   }
 
   //Code for back button
