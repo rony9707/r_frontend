@@ -22,6 +22,7 @@ body {
   --form-btn: hsl(190deg, 30%, 15%);
   --form-btn-text: hsl(190deg, 10%, 95%);
   --form-invalid-text-msg: #f83e4b;
+  --bkg-color-form-forget-password: #62778f;
 }
 
 body::-webkit-scrollbar {
@@ -62,13 +63,25 @@ body::-webkit-scrollbar-track:hover {
   --form-btn: #f3eae8;
   --form-btn-text: hsl(198, 21%, 12%);
   --form-invalid-text-msg: red;
+  --bkg-color-form-forget-password: #eaf8ef;
 }
 
 :root {
   --x: 400px;
   --y: 200px;
+  --media-query-width: 95%;
+
+}
 
 
+
+::ng-deep .my-tooltip {
+  /* // white-space: pre-line;
+  // width: 1500px;
+  // width: fit-content; */
+  max-width: unset !important;
+  white-space: pre-wrap;
+  font-size: 8px;
 }
 
 @media(max-width:600px) {
