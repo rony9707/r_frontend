@@ -11,7 +11,7 @@ body {
   --btn-txt-color: black;
   --btn-bg-color-hover: rgb(116, 107, 107);
   --bkg-color-dash: rgb(189, 190, 216);
-  --btn-color-dash: #4b6584;
+  --btn-color-dash: #8e83b6;
   --btn-txt-color-dash: #000000;
   --btn-color-dash-hover: #e6e6e6;
   --btn-txt-color-dash-hover: rgb(3, 3, 3);
@@ -35,7 +35,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 body::-webkit-scrollbar-thumb:hover {
-  background-color: #777;
+  background-color: #161212;
 }
 
 body::-webkit-scrollbar-track {

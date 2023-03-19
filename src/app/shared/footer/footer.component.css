@@ -104,6 +104,10 @@
   box-shadow: -35px 0px 60px 8px var(--footer-flicker-color);
 }
 
+#L {
+  padding-left: 10px;
+}
+
 #L,
 #G {
   animation: flickerLG 2s linear reverse infinite;
