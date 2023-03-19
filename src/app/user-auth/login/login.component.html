@@ -2,9 +2,11 @@
 <div id="blur">
   <appheader></appheader>
   <app-dashboard></app-dashboard>
-  <div class="main-container">
-    <div class="container">
-      <h1>Login Form</h1>
+  <div class="main-container-login">
+    <div class="sub-container">
+      <div class="login-header-text">
+        <h1>Login Form</h1>
+      </div>
       <form [formGroup]="loginForm" (ngSubmit)="loginUser()">
 
         <!-- username field-->
@@ -15,7 +17,7 @@
         </div>
 
         <!-- username valid text field-->
-        <div class="input-invalid-text" >
+        <div class="input-invalid-text-login" >
           <span *ngIf="usernameValidator && usernameValidator.invalid && usernameValidator.touched">Your username or email is not valid</span>
         </div>
 
@@ -33,7 +35,7 @@
           <i class="bi bi-eye-slash" id="togglePassword" (click)="passwordfield()"></i>
         </div>
         <!-- password valid text field-->
-        <div class="input-invalid-text" >
+        <div class="input-invalid-text-login" >
           <span *ngIf="passwordValidator && passwordValidator.invalid && passwordValidator.touched">Your password is not valid</span>
         </div>
 
@@ -81,7 +83,7 @@
         >
 
         <!-- email valid text field-->
-        <div class="input-invalid-text email" >
+        <div class="input-invalid-text-login email" >
           <span *ngIf="forgetPassEmailValidator && forgetPassEmailValidator.invalid && forgetPassEmailValidator.touched">Your email is not valid</span>
         </div>
 

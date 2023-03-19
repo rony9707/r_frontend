@@ -3,28 +3,36 @@
 }
 
 /* CSS for footer on bottom  */
-/* .main-container {
-  
-} */
+.main-container-login {
+  width: 80%;
+  margin: auto;
+  padding: 20px 40px 20px 40px;
+}
 
-.container {
+.sub-container {
   padding: 5px;
   background-color: var(--bkg-color-form);
   margin-top: 2px;
   margin-bottom: 2px;
   border-radius: 10px;
   border: 5px solid #2C3A47;
-  width: 70%;
+  width: 100%;
 }
 
-.container h1 {
+.login-header-text {
+  width: 100%;
+  display: flex;
+  padding: 20px 0px 20px 0px
+}
+
+.sub-container h1 {
   font-size: calc(28px + 1.5vw);
-  text-align: center;
   padding: 10px;
-  margin: 3px 0px 40px 0px;
+  margin: 10px 0px 0px 40px;
   font-weight: bold;
   word-wrap: break-word;
   color: var(--text-color);
+  margin: auto;
 }
 
 .input-div {
@@ -44,11 +52,12 @@
   flex-direction: column;
 }
 
-.input-invalid-text {
+.input-invalid-text-login {
   width: 80%;
-  margin: 0 auto;
+  margin: 5 auto;
   padding-left: 10px;
-  color: var(--form-invalid-text-msg)
+  color: var(--form-invalid-text-msg);
+  font-size: calc(12px + (20 - 18) * ((100vw - 300px) / (1600 - 300)));
 }
 
 .remember-me {
@@ -72,7 +81,7 @@
 
 .bi {
   position: relative;
-  margin-left: -17px;
+  margin-left: -19px;
 }
 
 .flex {
@@ -294,9 +303,21 @@
     width: var(--media-query-width);
   }
 
-  .container {
-    width: var(--media-query-width);
+  .main-container-login {
+    width: 100%;
+    margin: auto;
+    padding: 0px 0px 0px 0px;
   }
+
+  .sub-container {
+    padding: 5px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    border-radius: 0px;
+    border: none;
+    width: 100%;
+  }
+
 
   .flex {
     flex-direction: column;
@@ -310,7 +331,7 @@
     width: var(--media-query-width);
   }
 
-  .input-invalid-text {
+  .input-invalid-text-login {
     width: var(--media-query-width);
   }
 

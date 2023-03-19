@@ -8,6 +8,7 @@ import { AppRoutingModule } from '../app-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ClickOutsideDirective } from '../directives/click-outside.directive';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import {DatePipe} from '@angular/common';
 
 
 
@@ -17,6 +18,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     RegisterComponent,
     ClickOutsideDirective
   ],
+  providers: [DatePipe],
   imports: [
     CommonModule,
     SharedModule,
