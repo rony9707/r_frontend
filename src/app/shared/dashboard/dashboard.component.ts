@@ -27,17 +27,18 @@ export class DashboardComponent implements OnInit {
     // }, 5);
 
     //Browser refresh code for dark and light theme
-    this.browserRefresh = browserRefresh;
-    //console.log('refreshed?:', browserRefresh);
-    let GetTheme = JSON.parse(localStorage.getItem("PageTheme") || '{}');
-    if (GetTheme === "Light Mode") {
-      document.body.classList.add('light-theme');
-    }
-    else if (GetTheme === "Dark Mode") {
-      document.body.classList.add();
-    }
-    else {
-      document.body.classList.add('light-theme');//If someone deletes data from local stroage fix
+    if (this.browserRefresh = browserRefresh) {
+      //console.log('refreshed?:', browserRefresh);
+      let GetTheme = JSON.parse(localStorage.getItem("PageTheme") || '{}');
+      if (GetTheme === "Light Mode") {
+        document.body.classList.add('light-theme');
+      }
+      else if (GetTheme === "Dark Mode") {
+        document.body.classList.add();
+      }
+      else {
+        document.body.classList.add('dark-theme');//If someone deletes data from local stroage fix
+      }
     }
   }
 
@@ -47,11 +48,7 @@ export class DashboardComponent implements OnInit {
   }
 
   //theme
-  theme = JSON.parse(localStorage.getItem("PageTheme") || '{}');
-
-
-
-
+  theme: any = JSON.parse(localStorage.getItem("PageTheme") || '{}');
 
 
 
@@ -69,6 +66,7 @@ export class DashboardComponent implements OnInit {
     }
     localStorage.setItem("PageTheme", JSON.stringify(theme));
   }
+
 
 
 }

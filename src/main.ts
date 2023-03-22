@@ -10,3 +10,21 @@ if (environment.production) {
 
 platformBrowserDynamic().bootstrapModule(AppModule)
   .catch(err => console.error(err));
+
+
+//Mouse Pointer Code
+const blob: any = document.getElementById("blob");
+
+window.onpointermove = event => {
+  const { pageX, pageY } = event;
+
+  blob.animate({
+    left: `${pageX}px`,
+    top: `${pageY}px`
+  }, { duration: 2500, fill: "forwards" });
+}
+
+window.addEventListener('scroll', function () {
+  var scrollY = window.scrollY;
+  // console.log(scrollY)
+});
