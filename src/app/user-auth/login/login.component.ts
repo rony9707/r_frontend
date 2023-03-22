@@ -77,6 +77,12 @@ export class LoginComponent implements OnInit {
   loginUser() {
     //console.log(shajs('sha256').update(this.loginForm.value.password).digest('hex'));
     console.warn(this.loginForm.value);
+    if (!this.loginForm.valid) {
+      alert('Please fill all required fields correctly.');
+    }
+    else if (this.loginForm.valid) {
+      console.log(this.loginForm.value);
+    }
   }
 
 

@@ -65,8 +65,16 @@ export class RegisterComponent implements OnInit {
     // console.log("Current Date:" + currentDD, "User Date:" + userDD)
     // console.log(ageYear)
 
-    console.log(this.registerForm.value);
-    console.log(this.registerForm.value.firstName + "'s age is: " + ageYear);
+    if (!this.registerForm.valid) {
+      alert('Please fill all required fields correctly.');
+    }
+    else if (ageYear < 18) {
+      alert('You are still not above 18');
+    }
+    else if (this.registerForm.valid) {
+      console.log(this.registerForm.value);
+      console.log(this.registerForm.value.firstName + "'s age is: " + ageYear);
+    }
   }
 
   //Code for input field validator text 
@@ -140,7 +148,6 @@ export class RegisterComponent implements OnInit {
   imgClick() {
     this.clickImgCount++
     if (this.clickImgCount == 5) {
-      console.log("Image has been clicked 5 times")
       document.getElementById("Image")?.classList.add('confirmPasswordTextDisplayCSS')
       document.getElementById("Image1")?.classList.remove('imageHide')
     }

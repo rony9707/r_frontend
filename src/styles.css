@@ -100,3 +100,26 @@ body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
+
+/* Mouse Pointer Code */
+#blob {
+  background-color: var(--text-color);
+  height: 20px;
+  aspect-ratio: 1;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  translate: -50% -50%;
+  border-radius: 50%;
+  opacity: .8;
+  pointer-events: none;
+  border: 1.5px solid var(--bkg-color);
+  z-index: 3;
+}
+
+
+@media only screen and (max-width: 600px) {
+  #blob {
+    display: none;
+  }
+}

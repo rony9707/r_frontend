@@ -6,7 +6,7 @@
       <!-- <logo class="logo"></logo> -->
       <h1  routerLink="">Just A <span>Normal</span> Header</h1>
   </div>
-  <p class="subtitle prevent-select">{{subTitle}}</p>
+  <p class="subtitle prevent-select" id="subTitle" (mouseover)="subTitle($event)" data-value="Designed for my cats">{{subTitle_Header}}</p>
   <ul class="navbar-list">
       <li class="navbar-list-item">
           <button  class="navbar-list-btn prevent-select" routerLink="" routerLinkActive="current-page" [routerLinkActiveOptions]="{ exact: true }">Home</button>
