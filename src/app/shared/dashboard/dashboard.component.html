@@ -7,14 +7,14 @@
     <!--This Part of code was writted to tackel the issue of showing button value for light dark mode when local stroage data is blank for key theme-->
     <!--If local stroage is blank for theme, then Button Value is Hard Coded-->
     <ng-template [ngIf]="(theme | json) === '{}'">
+      <button class="dash-btn" id= 'mode-btn' (click)="toggleDarkTheme()">Light Mode</button>
+    </ng-template>
+    <!-- Local Stroage data for theme will come after first button click, after that it will work fine -->
+    <ng-template [ngIf]="theme==='Light Mode'">
       <button class="dash-btn" id= 'mode-btn' (click)="toggleDarkTheme()">Dark Mode</button>
     </ng-template>
-    <!--Local Stroage data for theme will come after first button click, after that it will work fine-->
-    <ng-template [ngIf]="theme==='Light Mode'">
-      <button class="dash-btn" id= 'mode-btn' (click)="toggleDarkTheme()">{{theme}}</button>
-    </ng-template>
     <ng-template [ngIf]="theme==='Dark Mode'">
-      <button class="dash-btn" id= 'mode-btn' (click)="toggleDarkTheme()">{{theme}}</button>
+      <button class="dash-btn" id= 'mode-btn' (click)="toggleDarkTheme()">Light Mode</button>
     </ng-template>
   </div>
 </div>

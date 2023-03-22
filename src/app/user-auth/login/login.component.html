@@ -18,7 +18,7 @@
 
         <!-- username valid text field-->
         <div class="input-invalid-text-login" >
-          <span *ngIf="usernameValidator && usernameValidator.invalid && usernameValidator.touched">Your username or email is not valid</span>
+          <span *ngIf="usernameValidator && usernameValidator.invalid && usernameValidator.touched">Username cannot be blank</span>
         </div>
 
 
@@ -36,7 +36,7 @@
         </div>
         <!-- password valid text field-->
         <div class="input-invalid-text-login" >
-          <span *ngIf="passwordValidator && passwordValidator.invalid && passwordValidator.touched">Your password is not valid</span>
+          <span *ngIf="passwordValidator && passwordValidator.invalid && passwordValidator.touched">Password cannot be blank</span>
         </div>
 
 

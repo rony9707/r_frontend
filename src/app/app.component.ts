@@ -12,9 +12,11 @@ export let browserRefresh = false;
 })
 export class AppComponent {
   title = 'LoginTemplate';
+  //Brower refresh code
   subscription: Subscription | undefined;
 
   constructor(private router: Router) {
+    //Brower refresh code
     this.subscription = router.events.subscribe((event) => {
       if (event instanceof NavigationStart) {
         browserRefresh = !router.navigated;
