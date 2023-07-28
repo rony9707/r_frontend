@@ -33,6 +33,12 @@
   word-wrap: break-word;
   color: var(--text-color);
   margin: auto;
+  -webkit-user-select: none;
+  /* Safari */
+  -ms-user-select: none;
+  /* IE 10 and IE 11 */
+  user-select: none;
+  /* Standard syntax */
 }
 
 .input-div {
@@ -289,9 +295,6 @@
   color: var(--text-color);
   text-decoration: none;
 }
-
-
-
 
 
 @media(max-width:600px) {

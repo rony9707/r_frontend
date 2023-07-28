@@ -8,7 +8,7 @@ import { RegisterComponent } from './user-auth/register/register.component';
 const routes: Routes = [
   {
     component: HomeComponent,
-    path:''
+    path: ''
   },
   {
     component: LoginComponent,
@@ -22,11 +22,11 @@ const routes: Routes = [
     component: AboutMeComponent,
     path: 'aboutMe'
   }
-  
+
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { scrollPositionRestoration: 'enabled' })],  /*angular scrool to top during route without animation */
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

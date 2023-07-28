@@ -10,7 +10,7 @@
 
 .main {
   /* background-color: blue; */
-  border: 1px solid black;
+  border: 5px solid #2C3A47;
   width: 70%;
   padding: 80px 5px 80px 5px;
   border-radius: 10px;
@@ -231,6 +231,10 @@ img {
     margin-left: 5px;
   }
 
+  h1 {
+    padding-left: 0px;
+  }
+
   .side {
     display: none;
   }
@@ -242,10 +246,11 @@ img {
 
   .register-header-text {
     justify-content: center;
+    padding-left: 0px;
   }
 
   .form {
-    margin: 20px 50px 20px 0px;
+    margin: 10px 0px 10px 0px;
   }
 
   .fullname {
