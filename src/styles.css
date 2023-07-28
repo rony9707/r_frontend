@@ -11,8 +11,8 @@ body {
   --btn-txt-color: black;
   --btn-bg-color-hover: rgb(116, 107, 107);
   --bkg-color-dash: rgb(189, 190, 216);
-  --btn-color-dash: #8e83b6;
-  --btn-txt-color-dash: #000000;
+  --btn-color-dash: #395B64;
+  --btn-txt-color-dash: #ffffff;
   --btn-color-dash-hover: #e6e6e6;
   --btn-txt-color-dash-hover: rgb(3, 3, 3);
   --bkg-color-footer: #111;
@@ -94,6 +94,8 @@ body::-webkit-scrollbar-track:hover {
 html,
 body {
   height: 100%;
+  /*angular scrool to top during route without animation */
+  scroll-behavior: auto !important;
 }
 
 body {
@@ -109,12 +111,14 @@ body {
   position: absolute;
   left: 50%;
   top: 50%;
-  translate: -50% -50%;
+  transform: translate(-50%, -50%);
   border-radius: 50%;
   opacity: .8;
   pointer-events: none;
   border: 1.5px solid var(--bkg-color);
   z-index: 3;
+  overflow-x: hidden !important;
+  overflow-y: hidden !important;
 }
 
 

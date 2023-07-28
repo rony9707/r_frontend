@@ -137,6 +137,18 @@ export class LoginComponent implements OnInit {
   }
 
 
+  //Function which will help to not type space in email field
+  doNotLetTypeSpace(event: KeyboardEvent) {
+    var charCode = (event.which) ? event.which : event.keyCode;
+    if ((charCode != 32)) {
+      return true;
+    } else {
+      event.preventDefault();
+      return false;
+    }
+  }
+
+
 
 
 }

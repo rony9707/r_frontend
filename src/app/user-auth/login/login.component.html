@@ -27,7 +27,7 @@
         <div class="input-div prevent-select fixToolTipCSS">
           <input type="password" class="input-field" id="password-field-id" placeholder="Enter your password"  
           formControlName="password"
-          (cut)="DisableCut($event)" (copy)="DisableCopy($event)" (paste)="DisablePaste($event)"
+          (cut)="DisableCut($event)" (copy)="DisableCopy($event)" (paste)="DisablePaste($event)" 
            matTooltip="Password must be between 8 to 16 characters, must have at least one lowercase character, one uppercase character, one number and one special character"
           matTooltipPosition=after matTooltipShowDelay=200  matTooltipClass="tooltip"
           >
@@ -68,32 +68,32 @@
 
 
 <!-- Modal Popup -->
-<!-- *TODO  ngIf does not let you use the dom, so need to use display:done instead of ngIf-->
-<div class="hover_bkgr_fricc" *ngIf="ispopUpShow"  ClickOutsideDirective (click)="ClickedOut($event)">
-  <span class="helper"></span>
-  <div id="inside-popup-id" class="inside-popup">
-    <form [formGroup]="forgetPassword" (ngSubmit)="forgetPasswordEmail()">
-      <div class="main-modal">
+  <!-- *TODO  ngIf does not let you use the dom, so need to use display:done instead of ngIf-->
+  <div class="hover_bkgr_fricc" *ngIf="ispopUpShow"  ClickOutsideDirective (click)="ClickedOut($event)">
+    <span class="helper"></span>
+    <div id="inside-popup-id" class="inside-popup">
+      <form [formGroup]="forgetPassword" (ngSubmit)="forgetPasswordEmail()">
+        <div class="main-modal">
 
-        <h1 class="flex-item-modal">Enter your email</h1>
-        
+          <h1 class="flex-item-modal">Enter your email</h1>
+          
 
-        <input type="text" class="input-field" placeholder="Enter your email"  
-        formControlName="email"
-        >
+          <input type="text" class="input-field" placeholder="Enter your email"   (keypress)="doNotLetTypeSpace($event)"
+          formControlName="email"
+          >
 
-        <!-- email valid text field-->
-        <div class="input-invalid-text-login email" >
-          <span *ngIf="forgetPassEmailValidator && forgetPassEmailValidator.invalid && forgetPassEmailValidator.touched">Your email is not valid</span>
+          <!-- email valid text field-->
+          <div class="input-invalid-text-login email" >
+            <span *ngIf="forgetPassEmailValidator && forgetPassEmailValidator.invalid && forgetPassEmailValidator.touched">Your email is not valid</span>
+          </div>
+
+          <button type="submit" class="form-btn-login flex-item-modal" [disabled]="forgetPassword.invalid">Submit</button>
+          
         </div>
-
-        <button type="submit" class="form-btn-login flex-item-modal" [disabled]="forgetPassword.invalid">Submit</button>
-        
-      </div>
-    </form>
-  
-  <a (click)="closePop()" class="flex-item-modal close-btn">Close</a>
-</div>
-  
+      </form>
+    
+      <a (click)="closePop()" class="flex-item-modal close-btn">Close</a>
+  </div>
+    
 </div>
 
