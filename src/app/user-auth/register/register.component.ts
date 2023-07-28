@@ -53,7 +53,7 @@ export class RegisterComponent implements OnInit {
     let userMMDD = userMM + userDD;
 
     let ageYear = currentYear - userYear;
-    if (currentMMDD < userMMDD) {
+    if (currentMMDD > userMMDD) {
       ageYear = ageYear - 1
     } else {
       ageYear
