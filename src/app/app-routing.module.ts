@@ -20,7 +20,7 @@ const routes: Routes = [
   },
   {
     component: AboutMeComponent,
-    path: 'aboutMe'
+    path: 'mySelf'
   }
 
 ];
