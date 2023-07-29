@@ -6,10 +6,6 @@
   align-items: center;
 }
 
-.left {
-  font-size: 20px;
-}
-
 .dash-btn {
   background-color: var(--btn-color-dash);
   text-decoration: none;
@@ -41,9 +37,104 @@
   color: var(--btn-txt-color-dash-hover);
 }
 
-.mode-btn:hover {
+.left {
+  font-size: 20px;
+}
+
+
+.back-btn:hover {
   background-color: var(--btn-color-dash-hover);
   color: var(--btn-txt-color-dash-hover);
+}
+
+
+
+
+.prevent-select {
+  -webkit-user-select: none;
+  /* Safari */
+  -ms-user-select: none;
+  /* IE 10 and IE 11 */
+  user-select: none;
+  /* Standard syntax */
+}
+
+
+.lightDark {
+  width: 100px;
+  height: 50px;
+  position: relative;
+  margin: 5px 10px 5px 7px;
+  background: #ebebeb;
+  border-radius: 200px;
+  box-shadow: inset 0px 5px 15px rgba(0, 0, 0, 0.4), inset 0px -5px 15px rgba(255, 255, 255, 0.4);
+  cursor: pointer;
+}
+
+
+.lightDark:after {
+  content: "";
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  top: 5px;
+  left: 7px;
+  background: linear-gradient(180deg, #f8ead9, #ffffff);
+  border-radius: 180px;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+  transition: .3s;
+}
+
+.darkLightModeInput {
+  width: 0;
+  height: 0;
+  visibility: hidden;
+}
+
+.darkLightModeInput:checked+.lightDark {
+  background: #242424;
+}
+
+.darkLightModeInput:checked+.lightDark:after {
+  left: 90px;
+  transform: translateX(-100%);
+  background: linear-gradient(180deg, #777, #3a3a3a);
+}
+
+
+
+.lightDark:active:after {
+  width: 50px;
+}
+
+
+
+.lightDark svg {
+  position: absolute;
+  top: 11px;
+  left: 12px;
+  z-index: 1;
+  fill: #ff7300;
+}
+
+.lightDark svg .sun {
+  left: 40px;
+  fill: #fff;
+  transition: 0.3s;
+}
+
+.lightDark svg.moon {
+  left: 56px;
+  fill: #7e7e7e;
+  transition: 0.3s;
+}
+
+.darkLightModeInput:checked+.lightDark svg.sun {
+  fill: #7e7e7e;
+}
+
+.darkLightModeInput:checked+.lightDark svg.moon {
+  fill: #fff;
 }
 
 @media(max-width:600px) {
@@ -58,14 +149,8 @@
     min-width: 8em;
   }
 
+  .lightDark {
+    margin: 5px 10px 10px 7px;
+  }
 
-}
-
-.prevent-select {
-  -webkit-user-select: none;
-  /* Safari */
-  -ms-user-select: none;
-  /* IE 10 and IE 11 */
-  user-select: none;
-  /* Standard syntax */
 }
