@@ -4,6 +4,7 @@ import { HomeComponent } from './home/home.component';
 import { SharedModule } from '../shared/shared.module';
 import { AboutMeComponent } from './about-me/about-me.component';
 import { BrowserModule } from '@angular/platform-browser';
+import { AppRoutingModule } from '../app-routing.module';
 
 
 @NgModule({
@@ -14,9 +15,10 @@ import { BrowserModule } from '@angular/platform-browser';
   imports: [
     CommonModule,
     SharedModule,
-    BrowserModule
+    BrowserModule,
+    AppRoutingModule
   ],
-  exports:[
+  exports: [
     HomeComponent,
     AboutMeComponent
   ]

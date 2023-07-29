@@ -71,7 +71,13 @@ body::-webkit-scrollbar-track:hover {
   --y: 200px;
   --media-query-width: 95%;
 
+  /* typewriter code in about me */
+  --bg-color: #2C3333;
+  --typewriterSpeed: 3s;
+  --typewriterCharacters: 26;
+
 }
+
 
 
 
