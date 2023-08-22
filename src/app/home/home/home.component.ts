@@ -1,5 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
+import { UserdataService } from 'src/app/services/userdata.service';
 
 @Component({
   selector: 'app-home',
@@ -7,15 +8,18 @@ import { DOCUMENT } from '@angular/common';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-
-  constructor(@Inject(DOCUMENT) private document: any) { }
+  constructor(
+    @Inject(DOCUMENT) private document: any,
+    private userData: UserdataService
+  ) {
+  }
+  
   elem;
   ngOnInit(): void {
     this.elem = document.documentElement;
   }
 
   moja() {
-    console.log("hi")
     if (this.elem.requestFullscreen) {
       this.elem.requestFullscreen();
     } else if (this.elem.mozRequestFullScreen) {

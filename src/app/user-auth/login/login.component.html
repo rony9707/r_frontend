@@ -7,7 +7,7 @@
       <div class="login-header-text">
         <h1>Login Form</h1>
       </div>
-      <form [formGroup]="loginForm" (ngSubmit)="loginUser()">
+      <form [formGroup]="loginForm" (ngSubmit)="loginUser()" >
 
         <!-- username field-->
         <div class="input-div prevent-select input-div-flex">
@@ -42,14 +42,14 @@
 
         <!-- remember me -->
         <div class="input-div prevent-select remember-me">
-          <input type="checkbox" class="remember-me-input" name="remember-me-input" id="remember-me-label">
-           <label class = "remember-me-label" for="remember-me-label">Remember Me</label>
+          <input type="checkbox" class="remember-me-input" name="remember-me-input" id="remember-me-label" formControlName="rememberMe">
+           <label class = "remember-me-label" for="remember-me-label">Remember my username or email</label>
         </div>
 
         <!-- login button -->
         <div class="input-div prevent-select">
           <!-- <a  class="form-btn-login" (click)="login()" id="login-id" >Sign in</a> -->
-          <button type="submit" class="form-btn-login" [disabled]="loginForm.invalid">Login</button>
+          <button type="submit" class="form-btn-login" [disabled]="loginForm.invalid" [disabled]="disableButton">Login</button>
         </div>
         <!-- [disabled]="loginForm.invalid" -->
 
@@ -57,13 +57,13 @@
         <!-- forgot passowrd and signup button -->
         <div class="input-div flex">
           <button class="form-btn" (click)="clickHandler()">Forgot Password</button>
-          <button class="form-btn" routerLink="/register">Sign Up</button>
+          <button class="form-btn" routerLink="/register" >Sign Up</button>
         </div>
 
       
     </div>
   </div>
-  <app-footer></app-footer>
+  <app-footer class="footer"></app-footer>
 </div>
 
 

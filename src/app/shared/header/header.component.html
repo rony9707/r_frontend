@@ -12,10 +12,10 @@
           <button  class="navbar-list-btn prevent-select" routerLink="" routerLinkActive="current-page" [routerLinkActiveOptions]="{ exact: true }">Home</button>
       </li>
       <li class="navbar-list-item">
-          <button  class="navbar-list-btn prevent-select" routerLink="/login" routerLinkActive="current-page" [routerLinkActiveOptions]="{ exact: true }">Login</button>
+          <button  class="navbar-list-btn prevent-select" (click)="goToUserProfile()"  routerLinkActive="current-page" [routerLinkActiveOptions]="{ exact: true }">Profile</button>
       </li>
       <li class="navbar-list-item">
-          <button  class="navbar-list-btn prevent-select" routerLink="/register" routerLinkActive="current-page" [routerLinkActiveOptions]="{ exact: true }">Register</button>
+          <button  class="navbar-list-btn prevent-select" routerLink="/underConstruction">Payment</button>
       </li>
   </ul>
 </div>

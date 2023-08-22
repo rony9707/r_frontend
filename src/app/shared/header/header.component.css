@@ -81,10 +81,10 @@ h1:hover span {
 }
 
 .navbar-list-btn {
-  font-family: 'Lora', serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background-color: var(--btn-bg-color);
   text-decoration: none;
-  font-weight: 600;
+  font-weight: 590;
   padding: .50em;
   border: none;
   color: var(--text-color);
