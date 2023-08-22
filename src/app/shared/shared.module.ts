@@ -5,6 +5,7 @@ import { AppRoutingModule } from '../app-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { FooterComponent } from './footer/footer.component';
 import { UnderConstructionComponent } from './under-construction/under-construction.component';
+import { Error404Component } from './error404/error404.component';
 
 
 
@@ -13,7 +14,8 @@ import { UnderConstructionComponent } from './under-construction/under-construct
     HeaderComponent,
     DashboardComponent,
     FooterComponent,
-    UnderConstructionComponent
+    UnderConstructionComponent,
+    Error404Component
   ],
   imports: [
     CommonModule,
@@ -23,7 +25,12 @@ import { UnderConstructionComponent } from './under-construction/under-construct
     HeaderComponent,
     DashboardComponent,
     FooterComponent,
-    UnderConstructionComponent
+    UnderConstructionComponent,
+    Error404Component
   ]
 })
-export class SharedModule { }
+export class SharedModule { 
+  constructor(){
+    console.log("Shared Module Loaded")
+  }
+}

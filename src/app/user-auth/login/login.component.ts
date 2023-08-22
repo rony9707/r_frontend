@@ -1,6 +1,9 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import swal from 'sweetalert2';
+import { delay } from 'rxjs/operators';
+import { UserdataService } from 'src/app/services/userdata.service';
 
 
 // var shajs: any = require('sha.js')
@@ -15,11 +18,21 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private route: Router) {
+  constructor(
+    private router: Router,
+    private userData: UserdataService
+  ) {
+    console.log("Login Component Loaded")
+  }
+
+  //This has the username of the user which will be shown in the next page
+  username: any = ""
+
+
+  ngOnInit() {
 
   }
-  ngOnInit() {
-  }
+
 
   //pasword Cut,Copy and Paste
   DisableCut(event: any) {
@@ -34,6 +47,7 @@ export class LoginComponent implements OnInit {
     alert("You can't paste in this input");
     event.preventDefault();
   }
+
 
   //password field click
   passwordfield(): void {
@@ -68,22 +82,110 @@ export class LoginComponent implements OnInit {
   //Form Code
   //FormGroup and FormControl Validators Code
   loginForm = new FormGroup({
-    username: new FormControl('', [Validators.required]),
-    password: new FormControl('', [Validators.required])
+    // username: new FormControl('rony9707', [Validators.required]),
+    username: new FormControl(localStorage.getItem('rememberMeUsername'), [Validators.required]),
+    password: new FormControl('Qwerty123.', [Validators.required]),
+    rememberMe: new FormControl(localStorage.getItem('rememberMeCheckbox') === 'true')//Here conversion is done from string to boolean as in local stroage stores data in string
   })
 
+  lastLoginDateObj = {
+    username: "",
+    dteLastLogin: ""
+  }
 
+  disableButton = false
   //Get value of the form code
   loginUser() {
+    this.disableButton = true;
+    // const timestamp = Date.now();
+    // const one_Day= 24 * 60 * 60 * 1000;
+    // const next_Day=timestamp+one_Day
+    // const dateString = new Date(timestamp).toString();
+    // const ndateString = new Date(next_Day).toString();
+    // console.log("DAte now",dateString)
+    // console.log("Next day",ndateString)
     //console.log(shajs('sha256').update(this.loginForm.value.password).digest('hex'));
-    console.warn(this.loginForm.value);
+
+
+    //Remember me code
+    if (this.loginForm.value.rememberMe == true) {
+      localStorage.setItem('rememberMeUsername', this.loginForm.value.username)
+      localStorage.setItem('rememberMeCheckbox', JSON.stringify(true))
+    }
+    else if (this.loginForm.value.rememberMe == false) {
+      localStorage.removeItem('rememberMeUsername')
+      localStorage.setItem('rememberMeCheckbox', JSON.stringify(false))
+    }
+
+    const timestamp = Date.now();
+    const dateString = new Date(timestamp).toString();
+
+
     if (!this.loginForm.valid) {
       alert('Please fill all required fields correctly.');
     }
     else if (this.loginForm.valid) {
-      console.log(this.loginForm.value);
+
+      this.lastLoginDateObj.username = this.loginForm.value.username;
+      this.lastLoginDateObj.dteLastLogin = dateString;
+
+      console.log("Login Form is sending to backend", this.lastLoginDateObj)
+      //Checking login user authentication
+      this.userData.loginUser(this.loginForm.value)
+        .pipe(
+          delay(1000) // Delay for 2 seconds
+        )
+        .subscribe((res) => {
+          swal.fire({
+            title: "Success",
+            text: "You are logged in successfully",
+            icon: "success",
+            timer: 1500, // Auto close after 2 seconds
+            timerProgressBar: true, // Show progress bar
+            showConfirmButton: false // Hide the "OK" button
+          });
+          localStorage.setItem('token', res.token)
+
+
+          //Update LastLoginDate time of the user
+          this.userData.updateLastLogin(this.lastLoginDateObj)
+            .subscribe((res) => {
+            },
+              (err) => {
+                swal.fire("Error", err.error.message)
+              })
+
+
+          // To show username in the URL next page
+          this.userData.users().subscribe((data: any) => {
+            this.username = `${data.username}`
+            this.router.navigate(['/user', this.username])
+          },
+            (err) => {
+            }
+          )
+
+
+        },
+          (err) => {
+            swal.fire("Error", err.error.message)
+            this.disableButton = false;
+          })
+
+
+
+
+
+
+
+
+
+
+
     }
   }
+
+
 
 
   //Code for input field validator text 
@@ -122,13 +224,39 @@ export class LoginComponent implements OnInit {
 
   //Forget Password Form
   forgetPassword = new FormGroup({
-    email: new FormControl('', [Validators.required, Validators.email])
+    email: new FormControl('chowdhury.agnibha.98@gmail.com', [Validators.required, Validators.email])
   })
 
 
-  //Get value of the forget password code
+  //Forget Password button click code
   forgetPasswordEmail() {
     console.warn(this.forgetPassword.value)
+
+    this.userData.forgotPassword(this.forgetPassword.value)
+      .pipe(
+        delay(1000) // Delay for 2 seconds
+      )
+      .subscribe((res) => {
+        swal.fire({
+          title: "Success",
+          text: "A link to reset your password has been sent to your email successfully.",
+          icon: "success",
+          timer: 1500, // Auto close after 2 seconds
+          timerProgressBar: true, // Show progress bar
+          showConfirmButton: false // Hide the "OK" button
+        });
+        console.log(res)
+        localStorage.setItem('token_reset_pass', res.token)
+        localStorage.setItem('username_reset_pass', res.username)
+      },
+        (err) => {
+          swal.fire({
+            title: "Error",
+            text: err.error.message,
+            icon: "error",
+          })
+        })
+
   }
 
   //Code for input field validator text 

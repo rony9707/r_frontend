@@ -15,6 +15,7 @@ platformBrowserDynamic().bootstrapModule(AppModule)
 //Mouse Pointer Code
 const blob: any = document.getElementById("blob");
 
+
 window.onpointermove = event => {
   const { pageX, pageY } = event;
 

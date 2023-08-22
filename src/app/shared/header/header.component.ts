@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { UserdataService } from 'src/app/services/userdata.service';
+import swal from 'sweetalert2';
 
 @Component({
   selector: 'appheader',
@@ -7,7 +10,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private userData: UserdataService,
+    private router: Router
+    ) { }
 
   ngOnInit(): void {
   }
@@ -46,6 +52,29 @@ export class HeaderComponent implements OnInit {
       }, 30);
 
     }
+  }
+
+  username:any
+  goToUserProfile(){
+
+    this.userData.users().subscribe((data:any)=>{
+      this.username=`${data.username}`
+      this.router.navigate(['/user',this.username])
+    },
+    (err)=>{
+      this.router.navigate(['/login'])
+
+      swal.fire({
+        title: "Not Logged in",
+        text: "Login required for application access.",
+        icon: "info",
+        timer: 2000, // Auto close after 2 seconds
+        timerProgressBar: true, // Show progress bar
+        showConfirmButton: false // Hide the "OK" button
+      });
+    }
+    )
+    
   }
 
 }
