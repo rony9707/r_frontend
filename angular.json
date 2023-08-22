@@ -107,5 +107,8 @@
       }
     }
   },
-  "defaultProject": "LoginTemplate"
+  "defaultProject": "LoginTemplate",
+  "cli": {
+    "analytics": false
+  }
 }

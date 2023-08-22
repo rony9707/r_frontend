@@ -4,11 +4,11 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { SharedModule } from '../shared/shared.module';
 import { MatIconModule } from '@angular/material/icon';
-import { AppRoutingModule } from '../app-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ClickOutsideDirective } from '../directives/click-outside.directive';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { DatePipe } from '@angular/common';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
 
 
@@ -16,20 +16,25 @@ import { DatePipe } from '@angular/common';
   declarations: [
     LoginComponent,
     RegisterComponent,
-    ClickOutsideDirective
+    ClickOutsideDirective,
+    ResetPasswordComponent
   ],
   providers: [DatePipe],
   imports: [
     CommonModule,
     SharedModule,
     MatIconModule,
-    AppRoutingModule,
     ReactiveFormsModule,
     MatTooltipModule
   ],
   exports: [
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    ResetPasswordComponent
   ]
 })
-export class UserAuthModule { }
+export class UserAuthModule {
+  constructor(){
+    console.log("User Auth Module Loaded")
+  }
+ }

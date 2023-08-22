@@ -14,7 +14,6 @@ export class AboutMeComponent implements OnInit {
     // Create a new Intersection Observer instance
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
-        console.log(entry);
         if (entry.isIntersecting) {
           entry.target.classList.add('show'); // Remove the dot (.) before 'show'
         } else {

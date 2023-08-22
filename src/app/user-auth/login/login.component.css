@@ -187,6 +187,7 @@
 
 /* CSS */
 .form-btn {
+  min-width: 200px;
   --b: 3px;
   /* border thickness */
   --s: .45em;
@@ -303,7 +304,10 @@
 
   .flex {
     width: var(--media-query-width);
+    flex-direction: column;
   }
+
+
 
   .main-container-login {
     width: 100%;
@@ -320,10 +324,6 @@
     width: 100%;
   }
 
-
-  .flex {
-    flex-direction: column;
-  }
 
   .form-btn {
     margin-top: 10px;

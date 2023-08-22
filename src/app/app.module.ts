@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeModule } from './home/home.module';
@@ -8,6 +7,10 @@ import { SharedModule } from './shared/shared.module';
 import { UserAuthModule } from './user-auth/user-auth.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule,HTTP_INTERCEPTORS} from '@angular/common/http';
+import { UserModule } from './user/user.module';
+import { AuthGuard } from './user-auth/auth.guard';
+import { TokenInterceptorService } from './services/token-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -20,9 +23,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     SharedModule,
     UserAuthModule,
     NgbModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    HttpClientModule,
+    UserModule
   ],
-  providers: [],
+  providers: [AuthGuard,{
+    provide: HTTP_INTERCEPTORS,
+    useClass: TokenInterceptorService,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
