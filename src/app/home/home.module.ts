@@ -26,6 +26,5 @@ import { AppRoutingModule } from '../app-routing.module';
 })
 export class HomeModule {
   constructor(){
-    console.log("Home Module Loaded")
   }
  }

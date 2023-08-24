@@ -4,7 +4,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import swal from 'sweetalert2';
 import { delay } from 'rxjs/operators';
 import { UserdataService } from 'src/app/services/userdata.service';
-
+import { Title } from '@angular/platform-browser';
 
 // var shajs: any = require('sha.js')
 
@@ -20,9 +20,9 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private userData: UserdataService
+    private userData: UserdataService,
+    private titleService: Title
   ) {
-    console.log("Login Component Loaded")
   }
 
   //This has the username of the user which will be shown in the next page
@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
 
 
   ngOnInit() {
-
+    this.titleService.setTitle('NRony');
   }
 
 
@@ -89,8 +89,7 @@ export class LoginComponent implements OnInit {
   })
 
   lastLoginDateObj = {
-    username: "",
-    dteLastLogin: ""
+    username: ""
   }
 
   disableButton = false
@@ -127,9 +126,7 @@ export class LoginComponent implements OnInit {
     else if (this.loginForm.valid) {
 
       this.lastLoginDateObj.username = this.loginForm.value.username;
-      this.lastLoginDateObj.dteLastLogin = dateString;
 
-      console.log("Login Form is sending to backend", this.lastLoginDateObj)
       //Checking login user authentication
       this.userData.loginUser(this.loginForm.value)
         .pipe(
@@ -230,7 +227,6 @@ export class LoginComponent implements OnInit {
 
   //Forget Password button click code
   forgetPasswordEmail() {
-    console.warn(this.forgetPassword.value)
 
     this.userData.forgotPassword(this.forgetPassword.value)
       .pipe(
@@ -245,9 +241,8 @@ export class LoginComponent implements OnInit {
           timerProgressBar: true, // Show progress bar
           showConfirmButton: false // Hide the "OK" button
         });
-        console.log(res)
-        localStorage.setItem('token_reset_pass', res.token)
-        localStorage.setItem('username_reset_pass', res.username)
+        // localStorage.setItem('token_reset_pass', res.token)
+        // localStorage.setItem('username_reset_pass', res.username)
       },
         (err) => {
           swal.fire({

@@ -32,8 +32,8 @@ export class ResetPasswordComponent implements OnInit {
 
     
 
-  token_reset_pass: any = localStorage.getItem('token_reset_pass')
-  username_reset_pass: any = localStorage.getItem('username_reset_pass')
+  // token_reset_pass: any = localStorage.getItem('token_reset_pass')
+  // username_reset_pass: any = localStorage.getItem('username_reset_pass')
 
   ngOnInit(): void {
 
@@ -49,12 +49,10 @@ export class ResetPasswordComponent implements OnInit {
     // console.log(this.usernameID)
     // console.log(this.token_reset_pass)
     // Get data from backend and show in frontend
-    this.userData.resetPasswordGet(this.username_reset_pass, this.token_reset_pass).subscribe((data: any) => {
-      console.log("data from backend is", data.message)
-
+    this.userData.resetPasswordGet(this.usernameID, this.tokenID).subscribe((data: any) => {
 
       if (data.message == "TokenExpiredError") {
-        console.log("final", data.message)
+
         swal.fire({
           title: "Token Expired",
           text: "Token has expired",
@@ -65,6 +63,12 @@ export class ResetPasswordComponent implements OnInit {
         this.route1.navigate([''])
       }
 
+      if (data.message == "JsonWebTokenError") {
+        this.route1.navigate(['**'])
+      }
+
+
+
 
       this.tokenEXP = data.message
       this.username = `${data.response.username}`
@@ -73,9 +77,7 @@ export class ResetPasswordComponent implements OnInit {
 
       //If Link is changed, then 404 route will be called
       if (this.usernameID != this.username || this.tokenID != this.token) {
-        console.log("Username or Token do not amtch")
-        console.log(this.usernameID == this.username)
-        console.log(this.tokenID == this.token)
+
         this.route1.navigate(['**'])
       }
       else {
@@ -116,13 +118,11 @@ export class ResetPasswordComponent implements OnInit {
 
   resetPassworUser() {
 
-  const timestamp = Date.now();
-  const dateString = new Date(timestamp).toString();
+
 
     const dataToSend={
       username: this.username,
-      password: this.resetPasswordForm.value.password,
-      dtemod: dateString
+      password: this.resetPasswordForm.value.password
     }
 
     if (!this.resetPasswordForm.valid) {
@@ -135,7 +135,6 @@ export class ResetPasswordComponent implements OnInit {
     }
     else{
       //If form is valid, then code here
-      console.log("If valid",dataToSend)
       this.userData.updatePassword(dataToSend)
       .pipe(
         delay(1000) // Delay for 1 seconds
@@ -165,7 +164,6 @@ export class ResetPasswordComponent implements OnInit {
 
 
   noButton(){
-    console.log("no button is clicked")
     this.resetPasswordForm.reset()
   }
 
