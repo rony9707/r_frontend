@@ -35,6 +35,5 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
 })
 export class UserAuthModule {
   constructor(){
-    console.log("User Auth Module Loaded")
   }
  }
