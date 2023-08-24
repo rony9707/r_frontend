@@ -19,7 +19,6 @@ export class RegisterComponent implements OnInit {
     private router: Router,
     private userData: UserdataService
   ) {
-    console.log("Register Component Loaded")
   }
 
   ngOnInit(): void { }
@@ -115,8 +114,8 @@ export class RegisterComponent implements OnInit {
       // console.log(this.registerForm.value.firstName + "'s age is: " + this.ageObj.age);
 
       //Sent to Backend to insert data in db
-      let sentDataToBackend = Object.assign(this.registerForm.value, this.ageObj, this.dateObj);
-      console.log(sentDataToBackend)
+      // let sentDataToBackend = Object.assign(this.registerForm.value, this.ageObj, this.dateObj);
+      let sentDataToBackend = Object.assign(this.registerForm.value, this.ageObj);
       this.userData.registerUser(sentDataToBackend)
         .subscribe(
           (res) => {

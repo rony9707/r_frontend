@@ -16,6 +16,5 @@ import { SharedModule } from '../shared/shared.module';
 })
 export class UserModule {
   constructor(){
-    console.log("User Welcome Module Loaded")
   }
 }
