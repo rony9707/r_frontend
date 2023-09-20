@@ -5,7 +5,7 @@
   <div class="main-container-login">
     <div class="sub-container">
       <div class="login-header-text">
-        <h1>Login Form</h1>
+        <h1>Sign in</h1>
       </div>
       <form [formGroup]="loginForm" (ngSubmit)="loginUser()" >
 
@@ -43,7 +43,7 @@
         <!-- remember me -->
         <div class="input-div prevent-select remember-me">
           <input type="checkbox" class="remember-me-input" name="remember-me-input" id="remember-me-label" formControlName="rememberMe">
-           <label class = "remember-me-label" for="remember-me-label">Remember my username or email</label>
+           <label class = "remember-me-label" for="remember-me-label">Remember my email or username</label>
         </div>
 
         <!-- login button -->

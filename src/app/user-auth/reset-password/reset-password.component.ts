@@ -22,7 +22,9 @@ export class ResetPasswordComponent implements OnInit {
     private route1: Router,
     private location: Location,
     private titleService: Title
-  ) { }
+  ) {
+    // console.log('Reset password Component Loaded');
+  }
 
   username: any
   token: any
@@ -30,7 +32,7 @@ export class ResetPasswordComponent implements OnInit {
   public tokenID;
   public tokenEXP;
 
-    
+
 
   // token_reset_pass: any = localStorage.getItem('token_reset_pass')
   // username_reset_pass: any = localStorage.getItem('username_reset_pass')
@@ -100,27 +102,20 @@ export class ResetPasswordComponent implements OnInit {
   toolTip = "Password must be between 8 to 16 characters, must have at least one lowercase character, one uppercase character, one number and one special character."
 
 
-
   //Form Code
   //FormGroup and FormControl Validators Code
   resetPasswordForm = new FormGroup({
     password: new FormControl(
-      'Qwerty123.', [Validators.required,
+      '', [Validators.required,
       Validators.minLength(8),
       Validators.maxLength(16),
       Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&.])[A-Za-z\d$@$!%*?&.].{8,16}')]),
-    confirmPassword: new FormControl('Qwerty123.', [Validators.required]),
+    confirmPassword: new FormControl('', [Validators.required]),
     showPassword: new FormControl('')
   })
 
-
-
-
   resetPassworUser() {
-
-
-
-    const dataToSend={
+    const dataToSend = {
       username: this.username,
       password: this.resetPasswordForm.value.password
     }
@@ -133,41 +128,40 @@ export class ResetPasswordComponent implements OnInit {
         showConfirmButton: true // Display the confirmation button
       });
     }
-    else{
+    else {
       //If form is valid, then code here
       this.userData.updatePassword(dataToSend)
-      .pipe(
-        delay(1000) // Delay for 1 seconds
-      )
-      .subscribe((res) => {
-        swal.fire({
-          title: "Success",
-          text: "Your password has been successfully updated. Please check your mail for confirmation.",
-          icon: "success",
-          timer: 3000, // Auto close after 2 seconds
-          timerProgressBar: true, // Show progress bar
-          showConfirmButton: false // Hide the "OK" button
-        });
+        .pipe(
+          delay(1000) // Delay for 1 seconds
+        )
+        .subscribe((res) => {
+          swal.fire({
+            title: "Success",
+            text: "Your password has been successfully updated. Please check your mail for confirmation.",
+            icon: "success",
+            timer: 3000, // Auto close after 2 seconds
+            timerProgressBar: true, // Show progress bar
+            showConfirmButton: false // Hide the "OK" button
+          });
+          localStorage.removeItem('token_reset_pass')
+          localStorage.removeItem('username_reset_pass')
 
+          this.userData.logoutUser()
+            .subscribe(() => {
+            })
 
-        this.userData.logoutUser()
-        .subscribe(() => {
-        })
-
-        this.route1.navigate(['/login'])
-      },
-        (err) => {
-          swal.fire("Error", err.error.message)
-        })
+          this.route1.navigate(['/login'])
+        },
+          (err) => {
+            swal.fire("Error", err.error.message)
+          })
     }
   }
 
 
-  noButton(){
+  noButton() {
     this.resetPasswordForm.reset()
   }
-
-
 
   get mainPasswordValidator() {
     return this.resetPasswordForm.get('password')
@@ -191,20 +185,18 @@ export class ResetPasswordComponent implements OnInit {
     // console.log(confirmPassword)
   }
 
-
-    //password field click
-    passwordfield(): void {
-      let mainPassword: any = document.getElementById("mainPasswordID")?.getAttribute('type')
-      let confirmPassword: any = document.getElementById("confirmPasswordID")?.getAttribute('type')
-      if (mainPassword === 'text' && confirmPassword === 'text' && this.resetPasswordForm.value.showPassword == true) {
-        document.getElementById("mainPasswordID")?.setAttribute('type', 'password')
-        document.getElementById("confirmPasswordID")?.setAttribute('type', 'password')
-      }
-      else if (mainPassword === 'password' && confirmPassword === 'password' && this.resetPasswordForm.value.showPassword == false) {
-        document.getElementById("mainPasswordID")?.setAttribute('type', 'text')
-        document.getElementById("confirmPasswordID")?.setAttribute('type', 'text')
-      }
+  //password field click
+  passwordfield(): void {
+    let mainPassword: any = document.getElementById("mainPasswordID")?.getAttribute('type')
+    let confirmPassword: any = document.getElementById("confirmPasswordID")?.getAttribute('type')
+    if (mainPassword === 'text' && confirmPassword === 'text' && this.resetPasswordForm.value.showPassword == true) {
+      document.getElementById("mainPasswordID")?.setAttribute('type', 'password')
+      document.getElementById("confirmPasswordID")?.setAttribute('type', 'password')
     }
-
+    else if (mainPassword === 'password' && confirmPassword === 'password' && this.resetPasswordForm.value.showPassword == false) {
+      document.getElementById("mainPasswordID")?.setAttribute('type', 'text')
+      document.getElementById("confirmPasswordID")?.setAttribute('type', 'text')
+    }
+  }
 
 }

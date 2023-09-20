@@ -4,9 +4,12 @@
 
 /* CSS for footer on bottom  */
 .main-container-login {
-  width: 80%;
+  width: 100%;
   margin: auto;
-  padding: 20px 40px 20px 40px;
+  padding: 40px calc(-100px + 4%) 40px calc(-100px + 4%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .sub-container {
@@ -16,7 +19,7 @@
   margin-bottom: 2px;
   border-radius: 10px;
   border: 5px solid #2C3A47;
-  width: 100%;
+  width: 80%;
 }
 
 .login-header-text {
@@ -44,7 +47,6 @@
 .input-div {
   padding: 10px;
   text-align: center;
-  ;
 }
 
 .input-field {
@@ -187,7 +189,8 @@
 
 /* CSS */
 .form-btn {
-  min-width: 200px;
+  width: 20%;
+  min-width: 120px;
   --b: 3px;
   /* border thickness */
   --s: .45em;
@@ -274,6 +277,11 @@
 
 .flex-item-modal {
   margin: 20px;
+  cursor: default;
+}
+
+span{
+  cursor: default;
 }
 
 .email {
@@ -291,9 +299,9 @@
 
 .close-btn {
   margin: 0px;
-  cursor: pointer;
   color: var(--text-color);
   text-decoration: none;
+  cursor: pointer;
 }
 
 
@@ -303,11 +311,9 @@
   }
 
   .flex {
-    width: var(--media-query-width);
     flex-direction: column;
+    align-items: center;
   }
-
-
 
   .main-container-login {
     width: 100%;
@@ -327,6 +333,8 @@
 
   .form-btn {
     margin-top: 10px;
+    width:80%;
+    word-wrap:break-word;
   }
 
   .remember-me {

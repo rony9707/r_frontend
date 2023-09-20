@@ -9,6 +9,7 @@ import { ClickOutsideDirective } from '../directives/click-outside.directive';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { DatePipe } from '@angular/common';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { ImageCropperModule } from 'ngx-image-cropper';
 
 
 
@@ -25,7 +26,8 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
     SharedModule,
     MatIconModule,
     ReactiveFormsModule,
-    MatTooltipModule
+    MatTooltipModule,
+    ImageCropperModule
   ],
   exports: [
     LoginComponent,
@@ -35,5 +37,6 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
 })
 export class UserAuthModule {
   constructor(){
+    // console.log('User Auth Module Loaded');
   }
  }
