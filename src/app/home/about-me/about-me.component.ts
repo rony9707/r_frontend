@@ -7,7 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AboutMeComponent implements OnInit {
 
-  constructor() { }
+  constructor() { 
+    // console.log('About Me Component Loaded');
+
+  }
 
   ngOnInit(): void {
 

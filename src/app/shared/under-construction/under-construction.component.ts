@@ -7,7 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UnderConstructionComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+    // console.log('Under Constrution Component Loaded');
+   }
 
   ngOnInit(): void {
   }

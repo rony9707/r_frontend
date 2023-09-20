@@ -19,7 +19,6 @@
   border-radius: 4px;
   text-transform: uppercase;
   min-width: 80px;
-  cursor: pointer;
   padding: 10px;
   margin: 10px;
   min-width: 8em;
@@ -27,6 +26,11 @@
 }
 
 .dash-btn:hover {
+  background-color: var(--btn-color-dash-hover);
+  color: var(--btn-txt-color-dash-hover);
+}
+
+.current-page {
   background-color: var(--btn-color-dash-hover);
   color: var(--btn-txt-color-dash-hover);
 }
@@ -39,13 +43,13 @@
 
 .left {
   font-size: 20px;
-  display:flex;
+  display: flex;
   align-items: center;
 }
 
 
 .right {
-  display:flex;
+  display: flex;
 }
 
 
@@ -74,8 +78,17 @@
   margin: 5px 10px 5px 7px;
   background: #ebebeb;
   border-radius: 200px;
-  box-shadow: inset 0px 5px 15px rgba(0, 0, 0, 0.4), inset 0px -5px 15px rgba(255, 255, 255, 0.4);
   cursor: pointer;
+  box-shadow: inset 0px 5px 15px rgba(0, 0, 0, 0.4), inset 0px -5px 15px rgba(255, 255, 255, 0.4);
+}
+
+
+.lightDark:hover {
+  background: #d5d5d5;
+  /* Darken the background color */
+  box-shadow: inset 0px 5px 15px rgba(0, 0, 0, 0.6), inset 0px -5px 15px rgba(255, 255, 255, 0.6);
+  transition: all 0.3s ease;
+  /* Add a smooth transition effect */
 }
 
 
@@ -96,6 +109,7 @@
   width: 0;
   height: 0;
   visibility: hidden;
+  cursor: pointer;
 }
 
 .darkLightModeInput:checked+.lightDark {
@@ -149,7 +163,7 @@
     align-items: start;
   }
 
-  .left{
+  .left {
     flex-direction: column;
     align-items: unset;
   }
@@ -165,7 +179,7 @@
     height: 50px;
   }
 
-  .right{
+  .right {
     justify-content: space-between;
     flex-direction: column;
   }

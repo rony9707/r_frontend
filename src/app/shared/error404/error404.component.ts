@@ -7,7 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class Error404Component implements OnInit {
 
-  constructor() { }
+  constructor() { 
+    // console.log('Error404 Component Loaded');
+  }
 
   ngOnInit(): void {
   }

@@ -11,6 +11,7 @@ import { HttpClientModule,HTTP_INTERCEPTORS} from '@angular/common/http';
 import { UserModule } from './user/user.module';
 import { AuthGuard } from './user-auth/auth.guard';
 import { TokenInterceptorService } from './services/token-interceptor.service';
+import { ImageCropperModule } from 'ngx-image-cropper';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { TokenInterceptorService } from './services/token-interceptor.service';
     NgbModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    UserModule
+    UserModule,
+    ImageCropperModule
   ],
   providers: [AuthGuard,{
     provide: HTTP_INTERCEPTORS,

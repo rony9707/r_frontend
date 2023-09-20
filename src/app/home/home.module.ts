@@ -5,6 +5,7 @@ import { SharedModule } from '../shared/shared.module';
 import { AboutMeComponent } from './about-me/about-me.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from '../app-routing.module';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { AppRoutingModule } from '../app-routing.module';
     CommonModule,
     SharedModule,
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
     
   ],
   exports: [
@@ -26,5 +28,6 @@ import { AppRoutingModule } from '../app-routing.module';
 })
 export class HomeModule {
   constructor(){
+    // console.log('Home Module Component Loaded');
   }
  }
