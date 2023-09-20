@@ -54,6 +54,50 @@ h1 {
   font-size: calc(12px + (20 - 18) * ((100vw - 300px) / (1600 - 300)));
 }
 
+.profile-pic-section{
+  margin: 5px 0px 10px 0px;
+  min-height:30px;
+  display: flex;
+  flex-direction: column;
+}
+
+.defaultAvatar{
+  margin-left: 60px;
+  border-radius:50%;
+  border:3px solid black;
+}
+
+.fixed-size-image {
+  width: 100px; /* Set the desired width */
+  height: 230px; /* Set the desired height */
+}
+
+.input-profile-pic{
+  margin: 15px 0px 0px 60px;
+  border: 1px solid black;
+  width: 250px;
+  border-radius: 5px;
+}
+
+.cropperDiv{
+  background-color: var(--bkg-color-form-forget-password);
+  box-shadow: 10px 10px 30px #4d5163;
+  /* border: 5px solid rgb(58, 52, 52); */
+  display: inline-block;
+  width: 100%;
+  border-radius: 20px;
+  padding: 15px 5%;
+  border: 3px solid black;
+}
+
+.closeCropper{
+  margin-top: 10px;
+}
+
+span{
+  cursor: default;
+}
+
 .fullname {
   display: flex;
 }
@@ -97,9 +141,24 @@ h1 {
   margin-left: 10px;
 }
 
-/* .phone-number {
-  padding-left: 10px;
-} */
+.phone-number {
+  display: flex;
+}
+
+.countrycode{
+  font-size: calc(12px + (20 - 18) * ((100vw - 300px) / (1600 - 300)));
+  width:25%;
+  background-color: transparent;
+  border: 1px solid black;
+  border-radius: 5px;
+  color:  var(--text-color);
+}
+
+.selectBoxOptions{
+  padding: 5px;
+  background-color: white;
+  color: black;
+}
 
 
 .gender {
@@ -276,6 +335,26 @@ img {
   .register-btn {
     margin: 10px 20px 10px 10px;
   }
+
+  .profile-pic-section{
+    align-items: center;
+    justify-content: center;
+  }
+
+  .defaultAvatar{
+    margin-left: 0px;
+    border: 1px solid black;
+  }
+  
+  .input-profile-pic{
+    margin: 5px 0px 0px 0px;
+    border: 1px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 10px;
+  }
+
 
 }
 

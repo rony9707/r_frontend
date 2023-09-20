@@ -5,7 +5,6 @@
   justify-content: center;
   flex-direction: column;
   text-align: center;
-  cursor: default;
   margin: auto;
   padding: 0;
 }
@@ -14,7 +13,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: default;
 }
 
 .header h1 {
@@ -23,7 +21,6 @@
   font-weight: 400;
   font-size: 4rem;
   margin: 0;
-  cursor: pointer;
   transition: 0.5s ease-out;
   font-family: 'Open Sans', sans-serif;
   font-family: 'Pacifico', cursive;
@@ -93,7 +90,6 @@ h1:hover span {
   display: inline-block;
   font-size: 1rem;
   transition-duration: 0.4s;
-  cursor: pointer;
   border-radius: 4px;
   text-transform: uppercase;
   min-width: 105px;
@@ -104,12 +100,8 @@ h1:hover span {
   color: var(--text-color);
 }
 
-.current-page {
-  background-color: var(--btn-bg-color-hover);
-  color: var(--text-color);
-}
 
-.current-page:hover {
+.current-page {
   background-color: var(--btn-bg-color-hover);
   color: var(--text-color);
 }
@@ -125,3 +117,4 @@ h1:hover span {
   user-select: none;
   /* Standard syntax */
 }
+

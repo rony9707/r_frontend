@@ -23,6 +23,7 @@ export class LoginComponent implements OnInit {
     private userData: UserdataService,
     private titleService: Title
   ) {
+    // console.log('Login Component Loaded');
   }
 
   //This has the username of the user which will be shown in the next page
@@ -44,7 +45,6 @@ export class LoginComponent implements OnInit {
   }
 
   DisablePaste(event: any) {
-    alert("You can't paste in this input");
     event.preventDefault();
   }
 
@@ -65,26 +65,11 @@ export class LoginComponent implements OnInit {
     }
   }
 
-
-  //Add Delay to button
-  // setInterval: any
-  // login() {
-  //   this.setInterval = setTimeout(() => {
-  //     this.route.navigateByUrl('register')
-  //   }, 1000);
-  //   this.setInterval = setTimeout(() => {
-  //     document.getElementById("login-id")?.classList.toggle('disabled-a')
-  //   }, 400);
-
-  // }
-
-
   //Form Code
   //FormGroup and FormControl Validators Code
   loginForm = new FormGroup({
-    // username: new FormControl('rony9707', [Validators.required]),
     username: new FormControl(localStorage.getItem('rememberMeUsername'), [Validators.required]),
-    password: new FormControl('Qwerty123.', [Validators.required]),
+    password: new FormControl('', [Validators.required]),
     rememberMe: new FormControl(localStorage.getItem('rememberMeCheckbox') === 'true')//Here conversion is done from string to boolean as in local stroage stores data in string
   })
 
@@ -96,15 +81,6 @@ export class LoginComponent implements OnInit {
   //Get value of the form code
   loginUser() {
     this.disableButton = true;
-    // const timestamp = Date.now();
-    // const one_Day= 24 * 60 * 60 * 1000;
-    // const next_Day=timestamp+one_Day
-    // const dateString = new Date(timestamp).toString();
-    // const ndateString = new Date(next_Day).toString();
-    // console.log("DAte now",dateString)
-    // console.log("Next day",ndateString)
-    //console.log(shajs('sha256').update(this.loginForm.value.password).digest('hex'));
-
 
     //Remember me code
     if (this.loginForm.value.rememberMe == true) {
@@ -116,23 +92,26 @@ export class LoginComponent implements OnInit {
       localStorage.setItem('rememberMeCheckbox', JSON.stringify(false))
     }
 
-    const timestamp = Date.now();
-    const dateString = new Date(timestamp).toString();
-
-
     if (!this.loginForm.valid) {
-      alert('Please fill all required fields correctly.');
+      swal.fire({
+        title: "Error",
+        text: "Please fill all required fields correctly.",
+        icon: "error",
+        timer: 1500, // Auto close after 2 seconds
+        timerProgressBar: true, // Show progress bar
+        showConfirmButton: false // Hide the "OK" button
+      });
     }
     else if (this.loginForm.valid) {
 
       this.lastLoginDateObj.username = this.loginForm.value.username;
-
       //Checking login user authentication
       this.userData.loginUser(this.loginForm.value)
         .pipe(
           delay(1000) // Delay for 2 seconds
         )
         .subscribe((res) => {
+          this.disableButton = false;
           swal.fire({
             title: "Success",
             text: "You are logged in successfully",
@@ -142,6 +121,7 @@ export class LoginComponent implements OnInit {
             showConfirmButton: false // Hide the "OK" button
           });
           localStorage.setItem('token', res.token)
+
 
 
           //Update LastLoginDate time of the user
@@ -168,16 +148,6 @@ export class LoginComponent implements OnInit {
             swal.fire("Error", err.error.message)
             this.disableButton = false;
           })
-
-
-
-
-
-
-
-
-
-
 
     }
   }
@@ -221,7 +191,7 @@ export class LoginComponent implements OnInit {
 
   //Forget Password Form
   forgetPassword = new FormGroup({
-    email: new FormControl('chowdhury.agnibha.98@gmail.com', [Validators.required, Validators.email])
+    email: new FormControl('', [Validators.required, Validators.email])
   })
 
 

@@ -6,7 +6,37 @@
         <h1 class="prevent-select">Create your account here</h1>
       </div>
       
-      <form class="form" [formGroup]="registerForm" (ngSubmit)="registerUser()">
+      <form class="form" [formGroup]="registerForm" (ngSubmit)="registerUser()" enctype="multipart/form-data">
+        
+
+        <!-- Upload Image -->
+        <div class="profile-pic-section">
+          <img  [src]="cropImagePreview || defaultImageUrl"  class="defaultAvatar fixed-size-image" id="uploadPreview">
+          <input class="input-profile-pic" type="file" accept="image/*" (change)="changeonImage($event)" 
+          formControlName="uploadImage">
+          <div *ngIf="showCropper" id="cropperDiv" class="cropperDiv">
+            <image-cropper
+              [imageChangedEvent]="imgChangeEvt"
+              [aspectRatio]="4/4"
+              [maintainAspectRatio]="true"
+              [resizeToWidth]="256"
+              format="jpeg"
+              (imageCropped)="cropImg($event)"
+              (imageLoaded)="imgLoad()"
+              (cropperReady)="initCropper()"
+              (loadImageFailed)="imgFailed()"
+              >
+            </image-cropper>
+            <button class="closeCropper" (click)="closeCropper()">Close Cropper</button>
+          </div>
+        </div>
+
+        <!-- Upload Image  valid text field -->
+        <div class="input-invalid-text-register" >
+           <span *ngIf="uploadImageValidator && uploadImageValidator.invalid && uploadImageValidator.touched">Please upload your image</span>
+        </div>
+
+
         <div class="fullname">
 
           <div class="div-common-style-for-valid-text">
@@ -71,12 +101,12 @@
 
               <!-- confirm Password valid text field-->
               <div class="input-invalid-text-register" >
-                <span *ngIf="PasswordFieldValidator && PasswordFieldValidator.invalid && PasswordFieldValidator.touched">Enter a valid password</span>
+                <span *ngIf="PasswordFieldValidator?.invalid && PasswordFieldValidator?.touched && !registerForm.get('confirmPassword')?.hasError('mismatch')">Enter a valid password</span>
               </div>         
 
               <!-- confirm Password valid text field -->
               <div class="input-invalid-text-register" >
-                <span id="confirmPasswordTextID" class="confirmPasswordTextDisplayCSS">Password and confirm password not matching</span>
+                <span  *ngIf="registerForm.get('confirmPassword')?.hasError('mismatch') && registerForm.get('confirmPassword')?.touched">Password and confirm password not matching</span>
               </div>         
           </div>
         </div>
@@ -102,16 +132,20 @@
 
         <!-- Phone Number -->
         <div class="phone-number div-form">
-          <input class="form-field" type="tel" id="phone" placeholder="Phone-Number" maxlength="13"
+          <select id="countryCode" name="countryCode" class="countrycode" *ngIf="jsonData" formControlName="phoneNumberCode">
+            <option class="selectBoxOptions" *ngFor="let country of jsonData.countries" value={{country.code}}>{{country.name}} {{country.code}}</option>
+          </select>
+          <input class="form-field" type="tel" id="phone" placeholder="Phone-Number" maxlength="15"
           formControlName="phoneNumber" (keypress)="onlyNumbers($event)">
         </div>
 
         <!-- Phone Number valid text field-->
         <div class="input-invalid-text-register" >
           <span *ngIf="phoneNumberValidator && phoneNumberValidator.invalid && phoneNumberValidator.touched">Enter a valid Phone Number</span>
-        </div>         
+        </div>  
 
-        <!-- *TODO  FIX Radio Button default checked-->
+               
+
         <!-- Gender -->
         <div class="gender div-form">
           <label style="font-weight: bold;">Gender</label>
